@@ -44,12 +44,12 @@ glob("**/workspace.json", async function (err, files) {
 		parsed.sha = hash.hash;
 		console.log(parsed.friendly_name + ' added')
 		parsed.compatibility.forEach((element, index) => {
-			if ('available_tags' in element) {
+			if (element.contains('available_tags')) {
 				element.available_tags.forEach((el) => {
 					channels.add(el)
 				})
 			}
-			if ('version' in element) {
+			if (element.contains('version')) {
 				versions.add(element.version)
 			}
 		})
